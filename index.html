@@ -15,15 +15,16 @@
 
       #sidebar {
         width: 220px;
-        background: #f0f0f0;
+        background: #2c3e50;
         padding: 20px;
-        border-right: 1px solid #ccc;
+        border-right: 1px solid #34495e;
         display: flex;
         flex-direction: column;
         overflow-y: auto;
+        color: #ecf0f1;
       }
-      h3{
-        color: rgb(67, 97, 238);
+      h3 {
+        color: #3498db;
         font-size: 1.45em;
       }
 
@@ -37,8 +38,8 @@
         position: absolute;
         width: 3000px;
         height: 3000px;
-        background: white;
-        background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+        background: #f5f5f5;
+        background-image: radial-gradient(#bdc3c7 1px, transparent 1px);
         background-size: 20px 20px;
         transform-origin: 0 0;
       }
@@ -47,7 +48,7 @@
         position: absolute;
         width: 120px;
         height: 60px;
-        border: 2px solid #333;
+        border: 2px solid #7f8c8d;
         border-radius: 5px;
         display: flex;
         flex-direction: column;
@@ -58,7 +59,7 @@
       }
 
       .node:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
       }
 
       .node-type {
@@ -79,7 +80,7 @@
         right: -8px;
         width: 16px;
         height: 16px;
-        background: #f45336;
+        background: #e74c3c;
         color: white;
         border-radius: 50%;
         display: flex;
@@ -97,7 +98,7 @@
       button {
         margin: 5px 0;
         padding: 8px 15px;
-        background: #ff9500;
+        background: #3498db;
         color: white;
         border: none;
         border-radius: 4px;
@@ -105,12 +106,12 @@
       }
 
       button:hover {
-       filter: brightness(90%);
-       transform: translateY(-1px);
+        filter: brightness(90%);
+        transform: translateY(-1px);
       }
 
       button:disabled {
-        background: #cccccc;
+        background: #95a5a6;
         cursor: not-allowed;
       }
 
@@ -121,17 +122,18 @@
       }
 
       .selected {
-        border-color: #2196f3 !important;
-        box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+        border-color: #e67e22 !important;
+        box-shadow: 0 0 10px rgba(230, 126, 34, 0.3);
       }
 
       .connection-menu {
         position: absolute;
-        background: white;
-        border: 1px solid #ccc;
+        background: #34495e;
+        border: 1px solid #2c3e50;
         border-radius: 4px;
         padding: 5px;
         z-index: 100;
+        color: #ecf0f1;
       }
 
       .connection-menu button {
@@ -140,14 +142,23 @@
         text-align: left;
         margin: 2px 0;
         padding: 5px;
+        background: #3498db;
+      }
+
+      .connection-menu input {
+        background: #ecf0f1;
+        border: 1px solid #7f8c8d;
+        padding: 5px;
+        margin-bottom: 5px;
+        width: 95%;
       }
 
       #zoom-controls {
         position: absolute;
         bottom: 20px;
         right: 20px;
-        background: white;
-        border: 1px solid #ccc;
+        background: #34495e;
+        border: 1px solid #2c3e50;
         border-radius: 4px;
         padding: 5px;
         display: flex;
@@ -162,15 +173,16 @@
         font-size: 12px;
         pointer-events: all;
         cursor: pointer;
-        background: white;
+        background: #ecf0f1;
         padding: 2px 5px;
         border-radius: 3px;
-        border: 1px solid #ccc;
+        border: 1px solid #7f8c8d;
       }
 
       hr {
         width: 100%;
         margin: 10px 0;
+        border-color: #7f8c8d;
       }
 
       .button-group {
@@ -182,51 +194,52 @@
         font-weight: bold;
         margin-top: 10px;
         margin-bottom: 5px;
+        color: #3498db;
       }
 
       /* Node type colors */
       .supplier {
-        background-color: #c8e6c9;
-        border-color: #4caf50;
+        background-color: #1abc9c;
+        border-color: #16a085;
       }
 
       .warehouse {
-        background-color: #bbdefb;
-        border-color: #2196f3;
+        background-color: #3498db;
+        border-color: #2980b9;
       }
 
       .transport {
-        background-color: #fff9c4;
-        border-color: #ffc107;
+        background-color: #f1c40f;
+        border-color: #f39c12;
       }
 
       .distribution {
-        background-color: #e1bee7;
-        border-color: #9c27b0;
+        background-color: #9b59b6;
+        border-color: #8e44ad;
       }
 
       .retail {
-        background-color: #ffccbc;
-        border-color: #ff5722;
+        background-color: #e74c3c;
+        border-color: #c0392b;
       }
 
       /* Connection styles */
       .regular {
-        stroke: #333;
+        stroke: #7f8c8d;
       }
 
       .express {
-        stroke: #f44336;
+        stroke: #e74c3c;
         stroke-dasharray: 5, 3;
       }
 
       .return {
-        stroke: #4caf50;
+        stroke: #2ecc71;
         stroke-dasharray: 2, 2;
       }
 
       .international {
-        stroke: #2196f3;
+        stroke: #3498db;
         stroke-width: 3;
       }
     </style>
@@ -314,7 +327,7 @@
 
       const arrow = document.createElementNS(svgNS, "path");
       arrow.setAttribute("d", "M0,0 L10,3.5 L0,7");
-      arrow.setAttribute("fill", "#333");
+      arrow.setAttribute("fill", "#7f8c8d");
 
       marker.appendChild(arrow);
       defs.appendChild(marker);
@@ -707,8 +720,8 @@
 
         labelBg.setAttribute("rx", "3");
         labelBg.setAttribute("ry", "3");
-        labelBg.setAttribute("fill", "white");
-        labelBg.setAttribute("stroke", "#ccc");
+        labelBg.setAttribute("fill", "#ecf0f1");
+        labelBg.setAttribute("stroke", "#7f8c8d");
         labelBg.setAttribute("stroke-width", "1");
 
         labelGroup.appendChild(labelBg);
@@ -1004,4 +1017,3 @@
     </script>
   </body>
 </html>
-
